@@ -1,9 +1,12 @@
 /*
- * FeatureList - simple and easy creation of an interactive "Featured Items" widget
- * Examples and documentation at: http://jqueryglobe.com/article/feature_list/
- * Version: 1.0.0 (01/09/2009)
- * Copyright (c) 2009 jQueryGlobe
- * Licensed under the MIT License: http://en.wikipedia.org/wiki/MIT_License
+ * sq.FeatureList - simple and easy creation of an interactive "Featured Items" widget
+ * Fork by subsquare.at - David Trattnig
+ * This is a extension of the original FeatureList by jQueryGlobe to allow the use
+ * of the "pause_on_hover" function also for the output container (not tabs only).
+ *
+ * Version: 1.0.0 (10/25/2012)
+ * Copyright (c) 2009-2012 jQueryGlobe, subsquare.at
+ * Licensed under the MIT License: 
  * Requires: jQuery v1.3+
 */
 ;(function($) {
@@ -56,6 +59,16 @@
 
 			if (options.pause_on_hover) {
 				tabs.mouseenter(function() {
+					clearInterval( timer );
+
+				}).mouseleave(function() {
+					clearInterval( timer );
+					timer = setInterval(function () {
+						slide();
+					}, options.transition_interval);
+				});
+				
+				output.mouseenter(function() {
 					clearInterval( timer );
 
 				}).mouseleave(function() {
