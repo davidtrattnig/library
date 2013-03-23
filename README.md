@@ -1,4 +1,7 @@
-subsquare-commons-js
+sq-library
 ====================
 
-common and forked JavaScript libraries
+Common, loose JavaScirpt and PHP Utilities.
+
+* JavaScript
+* PHP
